@@ -85,6 +85,10 @@ v4 %>%
 
 ?pnorm
 
+#macierz 10x9
+#seq(0,1.8,0.2)
+#[pnorm][nnorm][rnorm]
+
 dystrybuantaNormalnego <- seq(0, 3.99, .01) %>%
   pnorm() %>%
   round(digits = 9) %>%
