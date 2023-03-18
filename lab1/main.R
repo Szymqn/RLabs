@@ -11,6 +11,7 @@ densities <- dnorm(r, mean, sd)
 cumprobs <- pnorm(r, mean, sd)
 quantiles <- qnorm(q, mean, sd)
 
+
 m1 <- cbind(densities, cumprobs, quantiles)
 
 m1
