@@ -36,8 +36,8 @@ p2 <- acsNew %>%
   geom_bar(stat = "identity", width = 1, color = "white") + 
   coord_polar("y", start = 0) +
   theme_void() +
-  theme(plot.title = element_text(hjust = 0.5, color = 'peru'),
-        plot.subtitle = element_text(hjust = 1, color = 'yellowgreen')) +
+  theme(plot.title = element_text(hjust = 0.5, color = "peru"),
+        plot.subtitle = element_text(hjust = 1, color = "yellowgreen")) +
   scale_fill_discrete(name = "Języki", labels = l1)
 
 p2
@@ -57,5 +57,3 @@ p3 <- acsNew %>%
   scale_fill_discrete(name = "Języki", labels = l1)
 
 p3
-
-
