@@ -17,3 +17,4 @@ for (i in seq_along(y_axis)) {
 t_table
 
 datatable(t_table, caption = 'Tabela: Tablica rozkładu t-Studenta.')
+
