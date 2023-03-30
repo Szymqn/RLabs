@@ -87,8 +87,8 @@ library(hrbrthemes)
 
 p5 <- acsNew %>%
   ggplot(aes(x=x)) +
-  geom_histogram(aes(x = Insurance, y = -..count..), color = "darkolivegreen", fill = "darkolivegreen1", bins = 65) +
-  geom_histogram(aes(x = HouseCosts, y = ..count..), color = "red3", fill = "lightsalmon1", bins = 65) +
+  geom_histogram(aes(x = Insurance, y = -..count..), color = "#5ABB41", fill = "#DEFFAC", bins = 65) +
+  geom_histogram(aes(x = HouseCosts, y = ..count..), color = "#FF534A", fill = "#FFC8B3", bins = 65) +
   labs(title = "Podwójny histogram",
        x = "Ubezpieczenie domu",
        y = "Liczba przypadków",
@@ -101,7 +101,7 @@ p5 <- acsNew %>%
         plot.subtitle = element_text(hjust = 1, color = "navy"),
         
         axis.title.x.bottom = element_text(size = 12, hjust = .5),
-        axis.line.x = element_line(arrow = grid::arrow(length = unit(.3, "cm"), ends = "both"), size = 1),
+        axis.line.x = element_line(arrow = grid::arrow(length = unit(.2, "cm"), ends = "both"), size = .8),
         
         axis.title.y.left = element_text(size = 15, color = "green4", hjust = .5),
         axis.text.y.left = element_text(size = 10, color = "green4", hjust = 1, vjust = .3, angle = 65),

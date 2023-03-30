@@ -1523,6 +1523,28 @@ if (window.hljs) {
 
 
 
+<style type="text/css">
+
+div.csl-bib-body { }
+div.csl-entry {
+clear: both;
+}
+.hanging div.csl-entry {
+margin-left:2em;
+text-indent:-2em;
+}
+div.csl-left-margin {
+min-width:2em;
+float:left;
+}
+div.csl-right-inline {
+margin-left:2em;
+padding-left:1em;
+}
+div.csl-indent {
+margin-left: 2em;
+}
+</style>
 
 
 
@@ -1625,7 +1647,7 @@ display: none;
 <h3 class="subtitle">Laboratorium: Parametry liczbowe i pozycyjne
 rozkładu i próby.</h3>
 <h4 class="author">Jarosław Kotowicz</h4>
-<h4 class="date">1 marca 2023r.</h4>
+<h4 class="date">22 marca 2023r.</h4>
 
 </div>
 
@@ -1676,6 +1698,8 @@ kwartyle, decyle i centyle)</a></li>
 sposoby</a></li>
 </ul></li>
 </ul></li>
+<li><a href="#zadania-na-laboratorium" id="toc-zadania-na-laboratorium"><span class="toc-section-number">2</span> Zadania na laboratorium</a></li>
+<li><a href="#bibliografia" id="toc-bibliografia"><span class="toc-section-number">3</span> Bibliografia</a></li>
 </ul>
 </div>
 
@@ -1685,24 +1709,37 @@ pozycyjne w R.</h1>
 <div id="przydatne-pakiety-i-strony-internetowe" class="section level2" number="1.1">
 <h2><span class="header-section-number">1.1</span> Przydatne pakiety i
 strony internetowe</h2>
-<p>biblioteki: <strong>e1071</strong>, <strong>moments</strong>,
-<strong>DescTools</strong>, <strong>psych</strong>,
-<strong>Hmisc</strong>, <strong>pastecs</strong>.</p>
+<p>biblioteki: <strong>e1071</strong> <span class="citation">[1]</span>,
+<strong>moments</strong> <span class="citation">[2]</span>,
+<strong>DescTools</strong> <span class="citation">[3]</span>,
+<strong>psych</strong> <span class="citation">[4]</span>,
+<strong>Hmisc</strong> <span class="citation">[5]</span>,
+<strong>pastecs</strong> <span class="citation">[6]</span>.</p>
+<p>Pracujemy z wersją 4.2.3 R <span class="citation">[7]</span>.</p>
 <p>Strony internetowe:</p>
 <ul>
-<li><a href="%5Bhttps://statsandr.com/blog/descriptive-statistics-in-r/">https://statsandr.com/blog/descriptive-statistics-in-r</a></li>
-<li><a href="http://www.sthda.com/english/wiki/descriptive-statistics-and-graphics">http://www.sthda.com/english/wiki/descriptive-statistics-and-graphics</a></li>
-<li><a href="https://www.statmethods.net/stats/descriptives.html">https://www.statmethods.net/stats/descriptives.html</a></li>
-<li><a href="https://methodenlehre.github.io/SGSCLM-R-course/index.html">https://methodenlehre.github.io/SGSCLM-R-course/index.html</a></li>
-<li><a href="%5Bhttps://stats.oarc.ucla.edu/r/faq/how-can-i-get-a-table-of-basic-descriptive-statistics-for-my-variables/">https://stats.oarc.ucla.edu/r/faq/how-can-i-get-a-table-of-basic-descriptive-statistics-for-my-variables</a></li>
-<li><a href="http://www-1.ms.ut.ee/BDA/BDA4.pdf">http://www-1.ms.ut.ee/BDA/BDA4.pdf</a></li>
-<li><a href="%5Bhttps://learningstatisticswithr.com/book/descriptives.html">https://learningstatisticswithr.com/book/descriptives.html</a></li>
+<li><a href="https://www.statmethods.net/stats/descriptives.html">Descriptive
+Statistics</a> <span class="citation">[8]</span></li>
+<li><a href="https://statsandr.com/blog/descriptive-statistics-in-r">Descriptive
+statistics in R</a> <span class="citation">[9]</span></li>
+<li><a href="http://www.sthda.com/english/wiki/descriptive-statistics-and-graphics">Descriptive
+Statistics and Graphics</a> <span class="citation">[10]</span></li>
+<li><a href="https://methodenlehre.github.io/SGSCLM-R-course/index.html">Introduction
+to R</a> <span class="citation">[11]</span></li>
+<li><a href="%5Bhttps://stats.oarc.ucla.edu/r/faq/how-can-i-get-a-table-of-basic-descriptive-statistics-for-my-variables/">How
+can I get a table of basic descriptive statistics for my variables?</a>
+<span class="citation">[12]</span></li>
+<li><a href="http://www-1.ms.ut.ee/BDA/BDA4.pdf">Biological Data
+Analysis</a> <span class="citation">[13]</span></li>
+<li><a href="%5Bhttps://learningstatisticswithr.com/book/descriptives.html">Learning
+statistics with R: A tutorial for psychology students and other
+beginners</a> <span class="citation">[14]</span></li>
 </ul>
 </div>
 <div id="czyścimy-środowisko-i-utworzenie-losowych-obserwacji" class="section level2" number="1.2">
 <h2><span class="header-section-number">1.2</span> Czyścimy środowisko i
 utworzenie losowych obserwacji</h2>
-<pre class="r"><code>rm(list=ls())
+<pre class="r"><code>rm(list = ls())
 
 set.seed(7042022)
 x &lt;- rnorm(1000, mean = 7, sd = 2)</code></pre>
@@ -1875,7 +1912,7 @@ zmienności</h3>
 <h3><span class="header-section-number">1.5.4</span> Współczynnik
 asymetrii</h3>
 <pre class="r"><code>(wspolczynnik_aymetrii &lt;- list(populacyjny = mc_3 / ((odch_st_pop)^3),
-                               probkowy = mc_3 /(odch_st_pr)^3))</code></pre>
+                               probkowy = mc_3 / (odch_st_pr)^3))</code></pre>
 <pre><code>## $populacyjny
 ## [1] -0.08054256
 ## 
@@ -1970,11 +2007,122 @@ q1q3</code></pre>
 <div id="odchylenie-ćwiartkowe-na-dwa-sposoby" class="section level3" number="1.6.3">
 <h3><span class="header-section-number">1.6.3</span> Odchylenie
 ćwiartkowe na dwa sposoby</h3>
-<pre class="r"><code>(Q &lt;- (quantile(x, .75) - quantile(x, .25)) / 2)</code></pre>
+<pre class="r"><code>(Q &lt;- (quantile(x, .75) - quantile(x, .25)) / 2 )</code></pre>
 <pre><code>##      75% 
 ## 1.298611</code></pre>
+<pre class="r"><code>(Q &lt;- as.numeric((quantile(x, .75) - quantile(x, .25)) / 2 ))</code></pre>
+<pre><code>## [1] 1.298611</code></pre>
 <pre class="r"><code>(Q &lt;- IQR(x) / 2)</code></pre>
 <pre><code>## [1] 1.298611</code></pre>
+</div>
+</div>
+</div>
+<div id="zadania-na-laboratorium" class="section level1" number="2">
+<h1><span class="header-section-number">2</span> Zadania na
+laboratorium</h1>
+<ol style="list-style-type: decimal">
+<li>Załaduj bibliotekę <strong>tidyverse</strong> oraz podczytaj dane
+<strong>acsNew</strong>.</li>
+<li>Przekonwertuj w danych <strong>acsNew</strong> wszystkie zmienne
+typu znakowego na typ czynnikowy (<em>factor</em>).</li>
+<li>Dla zmiennej <strong>FamilyIncome</strong> wyznacz wszystkie możliwe
+parametry liczbowe i pozycyjne.</li>
+<li>Wyznacz pozostałe parametry pozycyjne przedstawione na wykładzie 3
+(definicje od 17 do 22 tj. od <em>pozycyjnego typowego obszaru
+zmienności</em> do <em>pozycyjnego współczynnika
+koncentracji</em>).</li>
+<li>Przeanalizuj następujący kod (funkcja zwraca listę z wybranymi
+parametrami liczbowymi), a następnie uzupełnij ją o pozostałe parametry
+liczbowe oraz napisz analogiczną funkcję, która będzie wyznaczała
+wszystkie parametry pozycyjne dla zbioru danych.</li>
+</ol>
+<pre class="r"><code>library(tidyverse)
+dane &lt;- read_csv(&quot;acsNew.csv&quot;) %&gt;% pull(FamilyIncome)
+MyFunction &lt;- function(dane) {
+  dane &lt;- na.omit(dane)
+  list(mean = mean(dane), 
+       sample_variance = var(dane),
+       population_variance = e1071::moment(x = dane, order = 2, center = TRUE, na.rm = TRUE))
+}
+
+MyFunction(dane)
+## $mean
+## [1] 110982.4
+## 
+## $sample_variance
+## [1] 9486698067
+## 
+## $population_variance
+## [1] 9482524421</code></pre>
+<ol start="6" style="list-style-type: decimal">
+<li>Rozwiąż w R zadania 5 i 6 z <strong>Listy 5</strong>.</li>
+</ol>
+</div>
+<div id="bibliografia" class="section level1" number="3">
+<h1><span class="header-section-number">3</span> Bibliografia</h1>
+<div id="refs" class="references csl-bib-body">
+<div id="ref-package_e1071" class="csl-entry">
+<div class="csl-left-margin">1. </div><div class="csl-right-inline">Meyer D, Dimitriadou E, Hornik K, et al. (2023)
+<a href="https://CRAN.R-project.org/package=e1071"><span class="nocase">e1071: Misc Functions of the Department of Statistics,
+Probability Theory Group (Formerly: E1071), TU Wien</span></a>.</div>
+</div>
+<div id="ref-package_moments" class="csl-entry">
+<div class="csl-left-margin">2. </div><div class="csl-right-inline">Komsta L, Novomestky F (2022) <a href="https://CRAN.R-project.org/package=moments"><span class="nocase">moments: Moments, Cumulants, Skewness, Kurtosis and
+Related Tests</span></a>.</div>
+</div>
+<div id="ref-package_desctools" class="csl-entry">
+<div class="csl-left-margin">3. </div><div class="csl-right-inline">Signorell A (2023) <a href="https://CRAN.R-project.org/package=DescTools"><span class="nocase">DescTools: Tools for Descriptive
+Statistics</span></a>.</div>
+</div>
+<div id="ref-package_psych" class="csl-entry">
+<div class="csl-left-margin">4. </div><div class="csl-right-inline">Revelle W (2023) <a href="https://CRAN.R-project.org/package=psych"><span class="nocase">psych: Procedures for Psychological, Psychometric, and
+Personality Research</span></a>, Evanston, Illinois, Northwestern
+University.</div>
+</div>
+<div id="ref-package_hmisc" class="csl-entry">
+<div class="csl-left-margin">5. </div><div class="csl-right-inline">Harrell Jr FE (2023) <a href="https://CRAN.R-project.org/package=Hmisc"><span>Hmisc: Harrell
+Miscellaneous</span></a>.</div>
+</div>
+<div id="ref-package_pastecs" class="csl-entry">
+<div class="csl-left-margin">6. </div><div class="csl-right-inline">Grosjean P, Ibanez F (2018) <a href="https://CRAN.R-project.org/package=pastecs"><span class="nocase">pastecs: Package for Analysis of Space-Time Ecological
+Series</span></a>.</div>
+</div>
+<div id="ref-language_r" class="csl-entry">
+<div class="csl-left-margin">7. </div><div class="csl-right-inline">R
+Core Team (2023) <a href="https://www.R-project.org/"><span class="nocase">R: A Language and Environment for Statistical
+Computing</span></a>, Vienna, Austria, R Foundation for Statistical
+Computing.</div>
+</div>
+<div id="ref-kabacoff_2017" class="csl-entry">
+<div class="csl-left-margin">8. </div><div class="csl-right-inline">Kabacoff RI (2017) Descriptive statistics,
+2017. Available from: <a href="https://www.statmethods.net/stats/descriptives.html">https://www.statmethods.net/stats/descriptives.html</a>.</div>
+</div>
+<div id="ref-soetewey_2020" class="csl-entry">
+<div class="csl-left-margin">9. </div><div class="csl-right-inline">Soetewey A (2020) Descriptive statistics in
+<span>R</span>, 2020. Available from: <a href="https://statsandr.com/blog/descriptive-statistics-in-r/">https://statsandr.com/blog/descriptive-statistics-in-r/</a>.</div>
+</div>
+<div id="ref-sthda_descriptive" class="csl-entry">
+<div class="csl-left-margin">10. </div><div class="csl-right-inline">Statistical Tools for High-throughput Data
+Analysis (STHDA) (2020) Descriptive statistics and graphics, 2020.
+Available from: <a href="http://www.sthda.com/english/wiki/descriptive-statistics-and-graphics">http://www.sthda.com/english/wiki/descriptive-statistics-and-graphics</a>.</div>
+</div>
+<div id="ref-ellis_mayer_2019" class="csl-entry">
+<div class="csl-left-margin">11. </div><div class="csl-right-inline">Ellis A, Mayer B (2019) <a href="https://methodenlehre.github.io/SGSCLM-R-course/index.html">Introduction
+to <span>R</span></a>.</div>
+</div>
+<div id="ref-ucla_2021" class="csl-entry">
+<div class="csl-left-margin">12. </div><div class="csl-right-inline">UCLA: Statistical Consulting Group (2021) How
+can <span>I</span> get a table of basic descriptive statistics for my
+variables, 2021. Available from: <a href="https://stats.oarc.ucla.edu/r/faq/how-can-i-get-a-table-of-basic-descriptive-statistics-for-my-variables/">https://stats.oarc.ucla.edu/r/faq/how-can-i-get-a-table-of-basic-descriptive-statistics-for-my-variables/</a>.</div>
+</div>
+<div id="ref-tartu_2007" class="csl-entry">
+<div class="csl-left-margin">13. </div><div class="csl-right-inline">University of Tartu (2007) Biological data
+analysis, 2007. Available from: <a href="https://stats.oarc.ucla.edu/r/faq/how-can-i-get-a-table-of-basic-descriptive-statistics-for-my-variables/">https://stats.oarc.ucla.edu/r/faq/how-can-i-get-a-table-of-basic-descriptive-statistics-for-my-variables/</a>.</div>
+</div>
+<div id="ref-navarro_2019" class="csl-entry">
+<div class="csl-left-margin">14. </div><div class="csl-right-inline">Navarro D (2019) <a href="https://learningstatisticswithr.com/book/">Learning statistics
+with <span>R</span>: <span>A</span> tutorial for psychology students and
+other beginners</a>.</div>
 </div>
 </div>
 </div>

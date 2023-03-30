@@ -1,6 +1,7 @@
 library(tidyverse)
+library(readr)
 
-acsNY <- read_csv("https://jaredlander.com/data/acs_ny.csv", 
+acsNY <- read_csv("./acsNew.csv", 
                   col_types = cols(ElectricBill = col_integer(), 
                                    FamilyIncome = col_integer(), 
                                    FamilyType = col_factor(levels = c("Married", "Female Head", "Male Head")), 
@@ -12,6 +13,8 @@ acsNY <- read_csv("https://jaredlander.com/data/acs_ny.csv",
                                    NumRooms = col_integer(), 
                                    NumVehicles = col_integer(), 
                                    NumWorkers = col_integer()))
+
+summary(acsNew)
 
 acsNY %>%
   filter(NumChildren == 0) %>%
