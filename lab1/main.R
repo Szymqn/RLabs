@@ -29,7 +29,7 @@ load("acsNY.RData")
 
 summary(acsNY)
 
-acsNew <- read_csv("https://www.jaredlander.com/data/acsNew.csv", 
+acsNew <- read_csv("./acsNew.csv", 
                    col_types = cols(ElectricBill = col_integer(), 
                                     FamilyIncome = col_integer(),
                                     FamilyType = col_factor(levels = c("Married", "Female Head", "Male Head")),
