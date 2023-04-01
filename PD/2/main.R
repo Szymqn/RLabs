@@ -2,9 +2,7 @@ library(tidyverse)
 library(ggplot2)
 library(readr)
 
-acsNew <- read_csv("./acsNew.csv", show_col_types = FALSE)
-
-summary(acsNew)
+acsNew <- read_csv("http://www.jaredlander.com/data/acsNew.csv")
 
 p1 <- acsNew %>%
   group_by(Language) %>%
@@ -21,12 +19,12 @@ p1 <- acsNew %>%
   coord_polar(theta = "y") +
   xlim(c(1, 4)) +
   labs(title = "Wykres pierścieniowy rodzin w NY wg języka",
-       caption = "Źródło: Opracowano własne na podstawie J.Landera",
+       caption = "Źródło: Opracowanie własne na podstawie J.Landera",
        subtitle = "Dane z roku 2002",
   ) +
-  geom_text(aes(x = c(2.55, 2, 2.45, 2.1, 2.65), y = (ymax + ymin) / 2, label = Language, angle = angle), fontface = "bold", size = 5, color = "grey20") +
+  geom_text(aes(x = c(2.58, 2.08, 2.5, 2.2, 2.65), y = (ymax + ymin) / 2, label = Language, angle = angle), fontface = "bold", size = 5.5, color = "grey20") +
   theme_void() +
-  theme(plot.title = element_text(hjust = .5, color = "limegreen"),
+  theme(plot.title = element_text(hjust = .5, color = "salmon4"),
         plot.subtitle = element_text(hjust = 1),
         legend.position = "none")
 
