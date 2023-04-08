@@ -1,6 +1,5 @@
 library(tidyverse)
 library(ggplot2)
-library(readr)
 
 acsNew <- read_csv("http://www.jaredlander.com/data/acsNew.csv")
 
@@ -8,8 +7,6 @@ p1 <- acsNew %>%
   group_by(Language) %>%
   summarise(count = n()) %>%
   arrange(desc(count)) %>%
-  mutate(prop = count / sum(count) * 100) %>%
-  mutate(ypos = cumsum(prop) - 0.5 * prop) %>%
   mutate(fraction = count / sum(count),
          ymax = cumsum(fraction),
          ymin = c(0, head(ymax, n = -1)), 
