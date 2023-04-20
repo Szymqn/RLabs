@@ -1,8 +1,7 @@
-rm(list = ls())
-
 library(tidyverse)
 library(readr)
 
+rm(list = ls())
 
 acsNew <- read_csv("./acsNew.csv")
 
@@ -60,24 +59,74 @@ DescTools::Mode(x)
 (odch_p <- e1071::moment(x, center = TRUE, absolute = TRUE, na.rm = TRUE))
 (srednia <- mean(x))
 
+(war_pop <- e1071::moment(x = x, order = 2, center = TRUE, na.rm = TRUE))
+(war_pr <- var(x))
+sum((x - mean(x))^2) / (length(x) - 1)
+
+q1 = q1q3[1]
+q3 = q1q3[2]
+EX <- srednia
+Mo <- DescTools::Mode(x)[1]
+DX <- odch_st_pop
+dX <- odch_st_pr
+D_9 <- quantile(x, .9)
+D_1 <- quantile(x, .1)
+
 # 17) T_Q = (Me-Q, Me+Q)
 D17 <- c(Me-Q, Me+Q)
 names(D17) <- NULL
 D17
 
-(typowy_obszar_zmiennosci <- list(populacyjny = list(LeftEnd = srednia - odch_st_pop,
-                                                     RightEnd = srednia + odch_st_pop),
-                                  probkowy = list(LeftEnd = srednia - odch_st_pr,
-                                                  RightEnd = srednia + odch_st_pr),
-                                  przecietny = list(LeftEnd = srednia - odch_p,
-                                                    RightEnd = srednia + odch_p)
-))
+# 18) 
+# V_Q = (Q/Me), (Me != 0)
+D18_1 <- (Q / Me)
+names(D18_1) <- NULL
+D18_1
 
-(wspolczynnik_koncentracji <- list(populacyjny = mc_4 / war_pop^2,
-                                   probkowy = mc_4 / war_pr^2))
+# V_Q_1,Q_2 = (Q_3 - Q_1)/(Q_3 + Q_1)
+D18_2 <- (q3 - q1)/(q3 + q1)
+D18_2
 
-(wspolczynnik_aymetrii <- list(populacyjny = mc_3 / ((odch_st_pop)^3),
-                               probkowy = mc_3 / (odch_st_pr)^3))
+# 19) 
+# W_S^Q = (Q_3 - Me) - (Me - Q_1)
+D19_1 <- (q3 - Me) - (Me - q1)
+names(D19_1) <- NULL
+D19_1
 
-# 18 V_Q = (Q/Me), (Me != 0) oraz V_Q_1, Q_3 = (Q_3 - Q_1)/(Q_3 + Q_1)
+# A_Q = ((Q_3 - Me) - (Me - Q_1)) / 2Q
+D19_2 <- ((q3 - Me) - (Me - q1)) / 2 * Q
+names(D19_2) <- NULL
+D19_2
 
+# 20)
+# W_S = E(X) - Mo
+D20 = EX - Mo
+names(D20) <- NULL
+D20
+
+# 21)
+# A_s = (E(X) - Mo)/D(X)
+D21_1 = (EX - Mo)/DX
+names(D21_1) <- NULL
+D21_1
+
+# A_d = (E(X) - Mo)/d(X)
+D21_2 = (EX - Mo)/dX
+names(D21_2) <- NULL
+D21_2
+
+# W_s,2 = (E(X) - Me)/D(X)
+D21_3 = (EX - Me)/DX
+names(D21_3) <- NULL
+D21_3
+
+# W_d,2 = (E(X) - Me)/d(X)
+D21_4 = (EX - Me)/dX
+names(D21_4) <- NULL
+D21_4
+
+# 22)
+# W_s = (D_9 - D_1)/(Q_3 - Q_1)
+D22 = (D_9 - D_1)/(q3 - q1)
+names(D22) <- NULL
+D22
