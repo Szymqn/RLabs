@@ -49,9 +49,9 @@ DescTools::Mode(x)
 (Q <- (quantile(x, .75) - quantile(x, .25)) / 2 )
 (Q <- as.numeric((quantile(x, .75) - quantile(x, .25)) / 2 ))
 (Q <- IQR(x) / 2)
-
+  
 # Wyznacz pozostałe parametry pozycyjne przedstawione na wykładzie 3 
-# (definicje od 17 do 22 tj. od pozycyjnego typowego obszaru zmienności
+# (definicje od 17 do 22 tj. od pozyqcyjnego typowego obszaru zmienności
 # do pozycyjnego współczynnika koncentracji).
 
 (odch_st_pop <- sqrt(e1071::moment(x = x, order = 2, center = TRUE, na.rm = TRUE)))
