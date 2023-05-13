@@ -101,9 +101,9 @@ fun4_2(c(8, 6), c(10, 12), 0.05, 0.8)
 # Zakładając, że rozkład długości ryb badanego gatunku jest normalny, zweryfikuj hipotęze, 
 # że średnia długość ryb tego gatunku przekracza 78 mm. Przyjmij poziom istotności α = 0.01
 
-x11 = c(92, 88, 85, 82, 89, 86, 81, 66, 75, 61, 78, 76, 91, 82, 82)
+x5_11 = c(92, 88, 85, 82, 89, 86, 81, 66, 75, 61, 78, 76, 91, 82, 82)
 
-t.test(x11, mu = 78, alternative = 'greater', conf.level = 0.98)
+t.test(x5_11, mu = 78, alternative = 'greater', conf.level = 0.98)
 # Na poziomie istotności 0.02, nie ma podstaw do odrzucenia hipotezy zerowej,
 # że średnia populacji jest równa 78
 
@@ -115,26 +115,28 @@ t.test(x11, mu = 78, alternative = 'greater', conf.level = 0.98)
 # Czy prawdziwe jest przypuszczenie księgowego?
 # Zweryfikuj stosowną hipotezę na poziomie istotności 0.01.
 
-x12 = c(30.0, 30.0, 29.9, 31.3, 32.0, 32.0, 32.1, 30.5, 32.3, 29.5, 27.8, 27.3, 31.1, 30.7, 24.5, 28.3, 31.3, 32.7, 33.3, 26.8)
+x5_12 = c(30.0, 30.0, 29.9, 31.3, 32.0, 32.0, 32.1, 30.5, 32.3, 29.5, 27.8, 27.3, 31.1, 30.7, 24.5, 28.3, 31.3, 32.7, 33.3, 26.8)
 
-t.test(x12, mu = 31, alternative = 'less', conf.level = 0.99)
+t.test(x5_12, mu = 31, alternative = 'less', conf.level = 0.99)
 # Na poziomie istotności 0.01 nie ma podstaw do odrzucenia hipotezy zerowej,
 # że średnia populacji wynosi 31
 
 # Zadanie 5.13. Na podstawie danych zawartych w pliku samochody.csv zweryfikuj
 # przypuszczenie, że średnia moc silnika samochodów wyprodukowanych w latach 1979–
 # 1981 wynosi 84 KM (wykorzystaj zmienne moc i rok). Przyjmij poziom istotności 0.01.
-x13 <- read.csv("./samochody.csv", sep = ';') %>%
+library(magrittr)
+library(dplyr)
+
+x5_13 <- read.csv("./samochody.csv", sep = ';') %>%
   filter(rok >= 79 & rok <= 81) %>%
   select(moc, rok) %>%
   na.omit() %>%
   pull(moc) %>%
   as.numeric()
 
-x13_s <- length(x13[which(x13 == 84)])
-x13_s
+x5_13_1 <- length(x13[which(x13 == 84)])
 
-prop.test(x13_s, length(x13), alternative = 'two.sided', conf.level = 0.99)
+prop.test(x5_13_1, length(x5_13), alternative = 'two.sided', conf.level = 0.99)
 # Na poziomie istotności 0.01 należy odrzucić hipoteze zerową, że średnia populacji
 # jest równa 84 na korzyść hipotezy alternatywnej, że średnia populacji
 # jest różna od 84
@@ -148,9 +150,9 @@ prop.test(x13_s, length(x13), alternative = 'two.sided', conf.level = 0.99)
 # Czy na podstawie tych danych możemy twierdzić, że średnia długość życia przekracza
 # 62 lata? Przyjmij poziom istotności 0.05.
 
-x14 <- c(70.5, 51.5, 76, 57.5, 64.5, 78.5, 79, 61, 72, 64.5, 64, 78.5, 53, 75, 68.5, 70, 70.5, 75.5)
+x5_14 <- c(70.5, 51.5, 76, 57.5, 64.5, 78.5, 79, 61, 72, 64.5, 64, 78.5, 53, 75, 68.5, 70, 70.5, 75.5)
 
-t.test(x14, mu = 62, alternative = 'greater')
+t.test(x5_14, mu = 62, alternative = 'greater')
 # Na poziomie istotności 0.05 należy odrzucić hipoteze zerową, że średnia populacji
 # jest równa 62, na korzyść alternatywnej, że średnia populacji nie jest większa od 62
 
@@ -158,21 +160,21 @@ t.test(x14, mu = 62, alternative = 'greater')
 # (plik samochody.csv) stwierdź, czy występuje statystycznie istotna różnica w przyspieszeniu
 # samochodów produkowanych w USA i w Japonii. Przyjmij poziom istotności α = 0.05
 
-x15_1 <- read.csv("./samochody.csv", sep = ';', dec = ',') %>%
+x15_5_1 <- read.csv("./samochody.csv", sep = ';', dec = ',') %>%
   filter(producent == 1) %>%
   select(producent, przysp) %>%
   na.omit() %>%
   pull(przysp) %>%
   as.double()
 
-x15_2 <- read.csv("./samochody.csv", sep = ';', dec = ',') %>%
+x15_5_2 <- read.csv("./samochody.csv", sep = ';', dec = ',') %>%
   filter(producent == 3) %>%
   select(producent, przysp) %>%
   na.omit() %>%
   pull(przysp) %>%
   as.double()
 
-t.test(x15_1, x15_2, alternative = 'two.sided', var.equal = TRUE)
+t.test(x5_15_1, x15_2, alternative = 'two.sided', var.equal = TRUE)
 # Na poziomie istotności 0.05 nie ma podstaw do odrzucenia hipotezy zerowej,
 # więc nie można stwierdzić, że występuje statystyczna różnica
 
@@ -185,10 +187,10 @@ t.test(x15_1, x15_2, alternative = 'two.sided', var.equal = TRUE)
 # nową metodą przewyższa istotnie wytrzymałość wsporników wykonanych metodą
 # tradycyjną? Przyjmij poziom istotności 0.04
 
-x16_1 <- c(53, 51, 62, 55, 59, 56, 61, 54, 47, 57)   
-x16_2 <- c(62, 55, 61, 58, 54, 49, 56, 60, 52, 63)  
+x5_16_1 <- c(53, 51, 62, 55, 59, 56, 61, 54, 47, 57)   
+x15_6_2 <- c(62, 55, 61, 58, 54, 49, 56, 60, 52, 63)  
 
-t.test(x16_2, x16_1, alternative = 'greater', var.equal = TRUE, conf.level = 0.96)
+t.test(x5_16_2, x5_16_1, alternative = 'greater', var.equal = TRUE, conf.level = 0.96)
 # Na poziomie istotności 0.04 nie ma podstaw do odrzucenia hipotezy zerowej,
 # więc nie można stwierdzić, że występuje wytrzymałość wsporników wykonanych 
 # nową metodą nie przewyższa istotnie wytrzymałości wsporników wykonanych metodą tradycyjną
@@ -200,10 +202,10 @@ t.test(x16_2, x16_1, alternative = 'greater', var.equal = TRUE, conf.level = 0.9
 # Zakładając, że badana cecha ma rozkład normalny, zweryfikuj przypuszczenie, że lekarz
 # I wypisuje średnio więcej recept niż lekarz II. Przyjmij poziom istotności 0.05.
 
-x17_1 <- c(19, 21, 15, 17, 24, 12, 19, 14, 20, 18, 23, 21, 17, 12)
-x17_2 <- c(17, 15, 12, 12, 16, 15, 11, 13, 14, 21, 19, 15, 11, 10)
+x5_17_1 <- c(19, 21, 15, 17, 24, 12, 19, 14, 20, 18, 23, 21, 17, 12)
+x5_17_2 <- c(17, 15, 12, 12, 16, 15, 11, 13, 14, 21, 19, 15, 11, 10)
 
-t.test(x17_1, x17_2, alternative = 'two.sided', var.equal = TRUE)
+t.test(x5_17_1, x5_17_2, alternative = 'two.sided', var.equal = TRUE)
 # Na poziomie istotności 0.05 nie ma podstaw do odrzucenia hipotezy zerowej,
 # więc nie można stwierdzić, że lekarz I wypisuje średnio więcej recept niż lekarz II
 
@@ -215,10 +217,10 @@ t.test(x17_1, x17_2, alternative = 'two.sided', var.equal = TRUE)
 # Czy można twierdzić, że przeciętna długość filmów produkcji A przewyższa przeciętną
 # długość filmów produkcji B? Zweryfikuj stosowną hipotezę na poziomie istotności 0.01.
 
-x18_1 <- c(102, 86, 98, 109, 92, 102, 95, 120)
-x18_2 <- c(81, 165, 97, 134, 92, 87, 114, 120, 95, 136, 170)
+x5_18_1 <- c(102, 86, 98, 109, 92, 102, 95, 120)
+x5_18_2 <- c(81, 165, 97, 134, 92, 87, 114, 120, 95, 136, 170)
 
-t.test(x18_1, x18_2, alternative = 'greater', var.equal = TRUE, conf.level = 0.99)
+t.test(x5_18_1, x5_18_2, alternative = 'greater', var.equal = TRUE, conf.level = 0.99)
 # Na poziomie istotności 0.01, nie ma podstaw do odrzucenia hipotezy zerowej,
 # więc nie można stwierdzić, że przeciętna długość filmów produkcji A przewyższa
 # przeciętną długość filmów produkcji B 
@@ -234,10 +236,10 @@ t.test(x18_1, x18_2, alternative = 'greater', var.equal = TRUE, conf.level = 0.9
 # podwyższenie poziomu owej substancji we krwi? Przyjmij poziom istotności α = 0.05
 # oraz założenie o normalności rozkładu badanej cechy.
 
-x19_1 <- c(2.76, 5.18, 2.68, 3.05, 4.10, 7.05, 6.60, 4.79)
-x19_2 <- c(7.02, 3.10, 5.44, 3.99, 5.21, 10.26, 13.91, 14.53)
+x5_19_1 <- c(2.76, 5.18, 2.68, 3.05, 4.10, 7.05, 6.60, 4.79)
+x5_19_2 <- c(7.02, 3.10, 5.44, 3.99, 5.21, 10.26, 13.91, 14.53)
 
-t.test(x19_1, x19_2, alternative = 'greater', var.equal = TRUE)
+t.test(x5_19_1, x5_19_2, alternative = 'greater', var.equal = TRUE)
 # Na poziomie istotności 0.05, nie ma podstaw do odrzucenia hipotezy zerowej,
 # więc nie można stwierdzić, że nowy lek powoduje istotne
 # podwyższenie poziomu owej substancji we krwi
@@ -249,10 +251,10 @@ t.test(x19_1, x19_2, alternative = 'greater', var.equal = TRUE)
 # Czy na podstawie powyższych danych można stwierdzić, że rzucenie palenia wpływa na
 # wzrost wagi palącej papierosy kobiety? Przyjmij poziom istotności α = 0.05.
 
-x20_1 <- c(67, 65, 62, 62, 66, 65, 61, 63, 64, 71, 69, 65, 61, 60)
-x20_2 <- c(69, 71, 65, 67, 74, 62, 69, 64, 70, 68, 73, 71, 67, 62)
+x5_20_1 <- c(67, 65, 62, 62, 66, 65, 61, 63, 64, 71, 69, 65, 61, 60)
+x5_20_2 <- c(69, 71, 65, 67, 74, 62, 69, 64, 70, 68, 73, 71, 67, 62)
 
-t.test(x20_1, x20_2, alternative = 'greater', var.equal = TRUE)
+t.test(x5_20_1, x5_20_2, alternative = 'greater', var.equal = TRUE)
 # Na poziomie istotności 0.05, nie ma podstaw do odrzucenia hipotezy zerowej,
 # więc nie można stwierdzić, że rzucenie palenia wpływa na
 # wzrost wagi palącej papierosy kobiety
@@ -269,13 +271,47 @@ t.test(x20_1, x20_2, alternative = 'greater', var.equal = TRUE)
 # Zweryfikuj hipotezę, że w grupie mężatek i żonatych odsetek osób pracujących na owej
 # uczelni dłużej niż 15 lat wynosi 0.3. Przyjmij poziom istotności α = 0.05
 
-x21_1 <- c(6, 8, 3, 2, 1)
-x21_2 <- c(20, 20, 60, 25, 15)
+x5_21_1 <- c(6, 8, 3, 2, 1)
+x5_21_2 <- c(20, 20, 60, 25, 15)
 
-n <- x21_1 + x21_2
-
-prop.test(sum(x21_2[4:5]), sum(x21_2[4:5]), p = 0.3, alternative = "two.sided")
+prop.test(sum(x5_21_2[4:5]), sum(x5_21_2[4:5]), p = 0.3, alternative = 'two.sided')
 # Na podstawie istotności 0.05 należy odrzucić hipotezę zerową, że
 # średnia w populacji jest rónwa 0.3, na korzyść hipotezy alternatywnej,
 # że średnia nie jest równa 0.3
 
+# 4.11. Lider pewnej partii politycznej powiedział w wywiadzie, że jego partia ma poparcie
+# 25% społeczeństwa. W odpowiedzi przytoczono wyniki ankiety przeprowadzonej wśród tysiąca osób.
+# Spośród ankietowanych tylko 240 osób popierało wspomnianą partię. Czy wyniki ankiety dowodzą,
+# że lider nie jest zorientowany w rzeczywistym poparciu dla swojej partii?
+
+# 4.12. Wyprodukowano pewien nowy środek owadobójczy. Producent gwarantuje 90% skuteczności.
+# Środek ten zastosowano na tysiącu owadach, z których 852 padły. Czy środek ma taką skuteczność
+# jaką gwarantuje producent?
+  
+# 4.13. Czy można twierdzić, że wadliwość procesu produkcyjnego wynosi 2%, jeżeli na 
+# 50 przebadanych wyrobów stwierdzono dwa braki.
+
+# 4.14. Czy można stwierdzić, że w transporcie psuje się 25% owoców, jeżeli na 
+# 200 przebadanych owoców było 60 zepsutych.
+
+# 4.15. Na 800 zbadanych pacjentów pewnego szpitala 320 miało grupę krwi „O”. 
+# Zweryfikować hipotezę, że procent pacjentów z tą grupą wynosi 35.
+
+# 5.6. Dwóm grupom robotników zlecono wykonanie tej samej pracy z tym jednak, że robotnicy grupy 
+# pierwszej przeszli wcześniej przeszkolenie. Zaobserwowana wydajność pracy w pierwszej grupie kształtowała
+# się następująco (w szt/h): 18.6, 17.9, 18.1, 17.0, 18.7, 18.3, podczas gdy w grupie drugiej zaobserwowano
+# następujące wydajności: 17.3, 17.6, 17.1, 16.0, 17.8. Na poziomie istotności 0.05 sprawdzić, czy przeszkolenie
+# zmieniło wydajność pracy robotnika.
+
+# 5.11. Wysunięto przypuszczenie, że jakość produkcji pewnego wyrobu po wprowadzeniu nowej, tańszej technologii nie
+# uległa zmianie. Wylosowano próbę 120 sztuk tego wyrobu spośród wyprodukowanych starą technologią i otrzymano 12 sztuk złych.
+# Wśród 160 wylosowanych sztuk wyprodukowanych nową technologią było 20 sztuk wadliwych. Czy wysunięte przypuszczenie można
+# w świetle uzyskanych wyników uznać za uzasadnione?
+  
+# 5.12. W pewnej szkole rozeszła się plotka, że uczniowie chcą ogolić dyrektora. Nauczyciel matematyki zapytał
+# o to 150 dziewcząt i 200 chłopców. Dziewięćdziesięciu chłopców i 70% dziewcząt odpowiedziało twierdząco. 
+# Czy można uznać, że chęć ogolenia dyrektora zależy od płci?
+  
+# 5.13. Na 200 przebadanych szczurów u 60 stwierdzono objawy obniżonego refleksu. Wśród chorych szczurów tylko
+# 20 dostawało pewien preparat P , a wszystkich szczurów karmionych tym preparatem było 80. Czy można uznać, 
+# że karmienie preparatem P wpływa na obniżenie refleksu u szczurów?
