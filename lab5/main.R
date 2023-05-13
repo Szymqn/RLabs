@@ -284,18 +284,63 @@ prop.test(sum(x5_21_2[4:5]), sum(x5_21_2[4:5]), p = 0.3, alternative = 'two.side
 # Spośród ankietowanych tylko 240 osób popierało wspomnianą partię. Czy wyniki ankiety dowodzą,
 # że lider nie jest zorientowany w rzeczywistym poparciu dla swojej partii?
 
+x4_11_n <- 1000
+x4_11_x <- 240
+
+x4_11_p0 <- .25
+
+prop.test(x4_11_x, x4_11_n, p = x4_11_p0)
+# Na poziomie istotności 0.05 nie ma podstaw do odrzucenia hipotezy zerowej, że lider nie 
+# jest zorientowany w rzeczywistym poparciu dla swojej partii
+
 # 4.12. Wyprodukowano pewien nowy środek owadobójczy. Producent gwarantuje 90% skuteczności.
 # Środek ten zastosowano na tysiącu owadach, z których 852 padły. Czy środek ma taką skuteczność
 # jaką gwarantuje producent?
+
+x4_12_n <- 1000
+x4_12_x <- 852
+
+x4_12_p0 <- .9
+
+prop.test(x4_12_x, x4_12_n, p = x4_12_p0)
+# Na poziomie istotności 0.05 należy odrzucić hipotezę zerową, że środek ma skuteczność
+# jaką gwarantuje producent, czyli 90%
   
 # 4.13. Czy można twierdzić, że wadliwość procesu produkcyjnego wynosi 2%, jeżeli na 
 # 50 przebadanych wyrobów stwierdzono dwa braki.
 
+x4_13_n <- 50
+x4_13_x <- 2
+
+x4_13_p0 <- 0.02
+
+prop.test(x4_13_x, x4_13_n, p = x4_13_p0)
+# Na poziomie istotności 0.05 nie ma podstaw do odrzucenia hipotezy zerowaj, że
+# wadliwość procesu produkcyjnego wynosi 2%
+
 # 4.14. Czy można stwierdzić, że w transporcie psuje się 25% owoców, jeżeli na 
 # 200 przebadanych owoców było 60 zepsutych.
 
+x4_14_n <- 200
+x4_14_x <- 60
+
+x4_14_p0 <- .25
+
+prop.test(x4_14_x, x4_14_n, p = x4_14_p0)
+# Na poziomie istotnosci 0.05 nie ma podstaw do odrzucenia hipotezy zerowaj, że
+# w transporcie psuje się 25% owoców
+
 # 4.15. Na 800 zbadanych pacjentów pewnego szpitala 320 miało grupę krwi „O”. 
 # Zweryfikować hipotezę, że procent pacjentów z tą grupą wynosi 35.
+
+x4_15_n <- 800
+x4_15_x <- 320
+
+x4_15_p0 <- .35
+
+prop.test(x4_15_x, x4_15_n, p = x4_15_p0)
+# Na poziomie istotności 0.05 należy odrzucić hipotezę zerowa, że procent pacjętów
+# z grupą krwi "O" wynosi 35%
 
 # 5.6. Dwóm grupom robotników zlecono wykonanie tej samej pracy z tym jednak, że robotnicy grupy 
 # pierwszej przeszli wcześniej przeszkolenie. Zaobserwowana wydajność pracy w pierwszej grupie kształtowała
@@ -303,15 +348,34 @@ prop.test(sum(x5_21_2[4:5]), sum(x5_21_2[4:5]), p = 0.3, alternative = 'two.side
 # następujące wydajności: 17.3, 17.6, 17.1, 16.0, 17.8. Na poziomie istotności 0.05 sprawdzić, czy przeszkolenie
 # zmieniło wydajność pracy robotnika.
 
+x5_6_1 <- c(18.6, 17.9, 18.1, 17.0, 18.7, 18.3)
+x5_6_2 <- c(17.3, 17.6, 17.1, 16.0, 17.8)
+
+t.test(x5_6_1, x5_6_2, alternative = 'two.sided')
+# Na poziomie istotności 0.05 należy odrzucić hipotezę zerową, że przeszkolenie zmieniło
+# wydajność pracy robootnika, na korzyść hipotezy alternatywnej, że wydajność się nie zminiła
+
 # 5.11. Wysunięto przypuszczenie, że jakość produkcji pewnego wyrobu po wprowadzeniu nowej, tańszej technologii nie
 # uległa zmianie. Wylosowano próbę 120 sztuk tego wyrobu spośród wyprodukowanych starą technologią i otrzymano 12 sztuk złych.
 # Wśród 160 wylosowanych sztuk wyprodukowanych nową technologią było 20 sztuk wadliwych. Czy wysunięte przypuszczenie można
 # w świetle uzyskanych wyników uznać za uzasadnione?
+
+prop.test(c(12, 20), c(120, 160), alternative = 'two.sided')
+# Na poziomie istotności 0.05 nie ma podstaw do odrzucenia hipotezy zerowej, że 
+# jakość produkcji pewnego wyrobu po wporwadzeniu nowej technologi nie uległa zmianie
   
 # 5.12. W pewnej szkole rozeszła się plotka, że uczniowie chcą ogolić dyrektora. Nauczyciel matematyki zapytał
 # o to 150 dziewcząt i 200 chłopców. Dziewięćdziesięciu chłopców i 70% dziewcząt odpowiedziało twierdząco. 
 # Czy można uznać, że chęć ogolenia dyrektora zależy od płci?
   
+prop.test(c(90, 150 * .7), c(200, 150), alternative = 'two.sided')
+# Na poziomie istotności 0.05 należy odrzucić hipotezę zerową na ktorzyść hipotezy alternatynej, że
+# hęc ogolenia dyrektora zależy od płci
+
 # 5.13. Na 200 przebadanych szczurów u 60 stwierdzono objawy obniżonego refleksu. Wśród chorych szczurów tylko
 # 20 dostawało pewien preparat P , a wszystkich szczurów karmionych tym preparatem było 80. Czy można uznać, 
 # że karmienie preparatem P wpływa na obniżenie refleksu u szczurów?
+
+prop.test(c(20, 40), c(80, 120), alternative = 'two.sided')
+# Na poziomie istotności 0.05 nie ma podstaw do odrzucenia hipotezy zerowej, że
+# karminie preparaem P wpływa na odniżnie refleksu u szczórow
