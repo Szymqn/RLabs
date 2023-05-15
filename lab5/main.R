@@ -370,7 +370,7 @@ prop.test(c(12, 20), c(120, 160), alternative = 'two.sided')
   
 prop.test(c(90, 150 * .7), c(200, 150), alternative = 'two.sided')
 # Na poziomie istotności 0.05 należy odrzucić hipotezę zerową na ktorzyść hipotezy alternatynej, że
-# hęc ogolenia dyrektora zależy od płci
+# chęć ogolenia dyrektora zależy od płci
 
 # 5.13. Na 200 przebadanych szczurów u 60 stwierdzono objawy obniżonego refleksu. Wśród chorych szczurów tylko
 # 20 dostawało pewien preparat P , a wszystkich szczurów karmionych tym preparatem było 80. Czy można uznać, 
