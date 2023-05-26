@@ -8,7 +8,7 @@ summary(dane)
 
 x1 <- as.vector(unlist(dane[c(7901:7916), 'price']), 'numeric')
 
-x2 <- as.vector(unlist(dane[c(35201:35230), 'price']), 'numeric')
+x2 <- as.vector(unlist(dane[c(35201:35231), 'price']), 'numeric')
 
 shapiro.test(x1)
 shapiro.test(x2)
@@ -18,6 +18,7 @@ shapiro.test(x2)
 # Wykonujemy test nieparametryczny, gdyż nie jest to rozkład normalny  
 wilcox.test(x1, x2, alternative = 'two.sided', conf.level = .97)
 
-# Na poziomie istotności 0.03 należy odrzucić hipotezę alternatywną, 
-# na korzyść hipotezy alternatywnej, że wartości przeciętne w obu
-# grupach nie są równe
+# Na poziomie istotności 0.03 należy odrzucić hipotezę zerową, 
+# że wartość przeciętna w obu grupach jest równa,
+# na korzyść hipotezy alternatywnej, że wartość przeciętna w obu
+# grupach nie jest równa.
